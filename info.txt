@@ -1,0 +1,4 @@
+login before using the api:
+ > gcloud auth application-default login
+
+set GOOGLE_APPLICATION_CREDENTIALS variable pointing to the json file resulted after creating the service account name
