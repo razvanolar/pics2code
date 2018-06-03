@@ -14,6 +14,8 @@ public class CodeGeneratorFactory {
         return CheckBoxCodeGenerator.getInstance();
       case UNCHECKED_CHECK_BOX:
         return CheckBoxCodeGenerator.getInstance();
+      case TEXT_FIELD:
+        return TextFieldCodeGenerator.getInstance();
     }
     return null;
   }

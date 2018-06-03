@@ -46,6 +46,7 @@ public class Pics2Code {
 
       consoleMessage("Create Android project");
       project.createAndroidProject(paramHandler.getOutDirectory());
+      project.writeContentXml(paramHandler.getOutDirectory(), code);
     } catch (Exception e) {
       e.printStackTrace();
     }
