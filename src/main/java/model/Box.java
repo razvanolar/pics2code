@@ -32,6 +32,14 @@ public class Box {
     return ymax;
   }
 
+  public float getWidth() {
+    return xmax - xmin;
+  }
+
+  public float getHeight() {
+    return ymax - ymin;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;

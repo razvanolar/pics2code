@@ -1,9 +1,10 @@
-package utils;
+package utils.text_extractor;
 
 import com.google.cloud.vision.v1.*;
 import com.google.protobuf.ByteString;
 import model.Box;
 import model.Form;
+import model.FormWithText;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -12,41 +13,41 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Future;
 
 public class TextExtractor {
 
-  public void extract(BufferedImage inputImage, List<Form> forms) {
+  public List<FormWithText> extract(BufferedImage inputImage, List<Form> forms) {
     try (ImageAnnotatorClient vision = ImageAnnotatorClient.create()) {
 
-      List<AnnotateImageRequest> requests = computeRequests(inputImage, forms);
+      List<Pair<Form, AnnotateImageRequest>> requests = computeRequests(inputImage, forms);
+      TextExtractorThreadPool extractor = new TextExtractorThreadPool(vision, requests);
+      List<Future<FormWithText>> futures = extractor.start();
 
-      BatchAnnotateImagesResponse response = vision.batchAnnotateImages(requests);
-      List<AnnotateImageResponse> responsesList = response.getResponsesList();
+      List<FormWithText> result = new ArrayList<>();
 
-      for (AnnotateImageResponse res : responsesList) {
-        if (res.hasError()) {
-          System.out.println(res.getError().getMessage());
-          return;
-        }
-
-        for (EntityAnnotation annotation : res.getTextAnnotationsList()) {
-//          annotation.getAllFields().forEach((k, v) -> {
-//            System.out.printf("%s : %s\n", k, v.toString());
-//          });
-          System.out.println(annotation.getDescription());
-        }
+      for (Future<FormWithText> future : futures) {
+        FormWithText formWithText = future.get();
+        result.add(formWithText);
       }
+
+      extractor.stop();
+
+      return result;
     } catch (Exception e) {
       e.printStackTrace();
     }
+    return null;
   }
 
-  private List<AnnotateImageRequest> computeRequests(BufferedImage inputImage, List<Form> forms) throws Exception {
-    List<AnnotateImageRequest> requests = new ArrayList<>();
+  private List<Pair<Form, AnnotateImageRequest>> computeRequests(BufferedImage inputImage, List<Form> forms) throws Exception {
+    List<Pair<Form, AnnotateImageRequest>> requests = new ArrayList<>();
 
     for (Form form : forms) {
-      if (!form.getLabel().hasText())
+      if (!form.getLabel().hasText()) {
+        requests.add(new Pair<>(form, null));
         continue;
+      }
 
       Box box = form.getBox();
       int xmin = (int) box.getXmin();
@@ -64,7 +65,7 @@ public class TextExtractor {
       AnnotateImageRequest request = AnnotateImageRequest.newBuilder().addFeatures(feat)
           .setImage(visionImage)
           .build();
-      requests.add(request);
+      requests.add(new Pair<>(form, request));
     }
 
     return requests;

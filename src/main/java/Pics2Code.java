@@ -1,8 +1,11 @@
 import model.Form;
+import model.FormWithText;
 import model.Row;
+import utils.CodeGeneratorUtils;
 import utils.Divider;
+import utils.FormUtils;
 import utils.ParametersHandler;
-import utils.TextExtractor;
+import utils.text_extractor.TextExtractor;
 import utils.xml.ParserXML;
 
 import javax.imageio.ImageIO;
@@ -21,12 +24,18 @@ public class Pics2Code {
 
       ParserXML parser = new ParserXML();
       List<Form> forms = parser.parse(paramHandler.getInputXML());
+      forms = FormUtils.computeBias(forms, image.getWidth(), image.getHeight());
 
       TextExtractor textExtractor = new TextExtractor();
-      textExtractor.extract(image, forms);
+      List<FormWithText> formsWithText = textExtractor.extract(image, forms);
 
+      // Skip divider operations for a while
       Divider divider = new Divider();
-      List<Row> rows = divider.getRows(forms);
+      List<Row> rows = divider.getRows(formsWithText);
+      //
+
+      String code = CodeGeneratorUtils.generate(formsWithText);
+      System.out.println(code);
     } catch (Exception e) {
       e.printStackTrace();
     }

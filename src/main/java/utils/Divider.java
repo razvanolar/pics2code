@@ -2,6 +2,7 @@ package utils;
 
 import model.Box;
 import model.Form;
+import model.FormWithText;
 import model.Row;
 
 import java.util.ArrayList;
@@ -9,16 +10,16 @@ import java.util.List;
 
 public class Divider {
 
-  public List<Row> getRows(List<Form> formsList) {
-    List<Form> forms = new ArrayList<>(formsList);
+  public List<Row> getRows(List<FormWithText> formsList) {
+    List<FormWithText> forms = new ArrayList<>(formsList);
     List<Row> rows = new ArrayList<>();
     while (!forms.isEmpty()) {
-      Form form = forms.get(0);
+      FormWithText form = forms.get(0);
       Row row = new Row();
       row.addForm(form);
       for (int i=1; i<forms.size(); i++) {
-        Form other = forms.get(i);
-        if (isIntersection(form, other)) {
+        FormWithText other = forms.get(i);
+        if (isIntersection(form.getForm(), other.getForm())) {
           row.addForm(other);
         }
       }

@@ -5,17 +5,17 @@ import java.util.List;
 
 public class Row {
 
-  private List<Form> forms;
+  private List<FormWithText> forms;
 
   public Row() {
     this.forms = new ArrayList<>();
   }
 
-  public List<Form> getForms() {
+  public List<FormWithText> getForms() {
     return forms;
   }
 
-  public void addForm(Form form) {
+  public void addForm(FormWithText form) {
     if (form != null)
       forms.add(form);
   }
