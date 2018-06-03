@@ -1,0 +1,29 @@
+item {
+  id: 1
+  name: 'menu_bar'
+}
+
+item {
+  id: 2
+  name: 'text_field'
+}
+
+item {
+  id: 3
+  name: 'button'
+}
+
+item {
+  id: 4
+  name: 'label'
+}
+
+item {
+  id: 5
+  name: 'checked_check_box'
+}
+
+item {
+  id: 6
+  name: 'unchecked_check_box'
+}

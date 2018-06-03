@@ -1,0 +1,62 @@
+<labels>
+	<label name='label'>
+		<box xmin='65.75124709308147' ymin='459.22099471092224' xmax='131.4526230096817' ymax='482.7768602967262' />
+	</label>
+	<label name='label'>
+		<box xmin='69.10150356590748' ymin='353.0143716931343' xmax='136.7148993909359' ymax='377.78384387493134' />
+	</label>
+	<label name='label'>
+		<box xmin='257.4657757282257' ymin='456.4217460155487' xmax='327.9318128824234' ymax='482.92666256427765' />
+	</label>
+	<label name='label'>
+		<box xmin='68.77268923819065' ymin='138.31527329981327' xmax='134.8322660624981' ymax='161.27639040350914' />
+	</label>
+	<label name='label'>
+		<box xmin='68.89614154398441' ymin='191.1089465022087' xmax='134.65426939725876' ymax='212.13191255927086' />
+	</label>
+	<label name='menu_bar'>
+		<box xmin='68.55327899754047' ymin='9.051421284675598' xmax='429.5110421180725' ymax='68.09804283082485' />
+	</label>
+	<label name='label'>
+		<box xmin='67.4184481203556' ymin='240.79897925257683' xmax='136.6513670384884' ymax='268.8947232067585' />
+	</label>
+	<label name='label'>
+		<box xmin='262.34331727027893' ymin='406.37362092733383' xmax='296.35591834783554' ymax='432.6385027170181' />
+	</label>
+	<label name='label'>
+		<box xmin='69.891292989254' ymin='298.90547826886177' xmax='134.3643600344658' ymax='323.47037583589554' />
+	</label>
+	<label name='label'>
+		<box xmin='68.93113307654858' ymin='408.81410360336304' xmax='117.53435030579567' ymax='432.068894803524' />
+	</label>
+	<label name='unchecked_check_box'>
+		<box xmin='174.5047367811203' ymin='410.9433454275131' xmax='200.24082979559898' ymax='435.47286450862885' />
+	</label>
+	<label name='button'>
+		<box xmin='326.1659804582596' ymin='532.0208954811096' xmax='431.1280207633972' ymax='575.5734243988991' />
+	</label>
+	<label name='unchecked_check_box'>
+		<box xmin='379.47882717847824' ymin='355.62262147665024' xmax='405.22172927856445' ymax='380.9056022763252' />
+	</label>
+	<label name='unchecked_check_box'>
+		<box xmin='379.37395292520523' ymin='460.8043912053108' xmax='406.57915991544724' ymax='484.8733979463577' />
+	</label>
+	<label name='text_field'>
+		<box xmin='256.77036023139954' ymin='129.26761850714684' xmax='428.9230811595917' ymax='168.43056127429008' />
+	</label>
+	<label name='text_field'>
+		<box xmin='255.73755812644958' ymin='181.95102229714394' xmax='431.6332692503929' ymax='220.10172799229622' />
+	</label>
+	<label name='text_field'>
+		<box xmin='256.13348853588104' ymin='233.93275618553162' xmax='431.66354459524155' ymax='274.1330663859844' />
+	</label>
+	<label name='text_field'>
+		<box xmin='259.11085081100464' ymin='80.35874497145414' xmax='431.82845348119736' ymax='119.39829684793949' />
+	</label>
+	<label name='label'>
+		<box xmin='67.19953960180283' ymin='85.08062962442636' xmax='173.3243280351162' ymax='110.61064228415489' />
+	</label>
+	<label name='checked_check_box'>
+		<box xmin='175.5223725438118' ymin='461.04728400707245' xmax='201.6400467157364' ymax='487.4898952245712' />
+	</label>
+</labels>
