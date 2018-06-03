@@ -6,11 +6,11 @@ public class LabelCodeGenerator extends CodeGenerator {
 
   private static LabelCodeGenerator INSTANCE;
 
-  public LabelCodeGenerator() {
+  private LabelCodeGenerator() {
     super(Label.LABEL);
   }
 
-  public static LabelCodeGenerator getInstance() {
+  public static CodeGenerator getInstance() {
     if (INSTANCE == null)
       INSTANCE = new LabelCodeGenerator();
     return INSTANCE;

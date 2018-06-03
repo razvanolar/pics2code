@@ -7,8 +7,8 @@ public enum Label {
   TEXT_FIELD("text_field", true, "text_field", "EditText"),
   BUTTON("button", true, "button", "Button"),
   LABEL("label", true, "label", "TextView"),
-  CHECKED_CHECK_BOX("checked_check_box", false, "check_box", ""),
-  UNCHECKED_CHECK_BOX("unchecked_check_box", false, "check_box", "");
+  CHECKED_CHECK_BOX("checked_check_box", false, "check_box", "CheckBox"),
+  UNCHECKED_CHECK_BOX("unchecked_check_box", false, "check_box", "CheckBox");
 
   // name used in xml files
   String name;

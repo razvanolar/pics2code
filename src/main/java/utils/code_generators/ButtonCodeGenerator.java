@@ -6,11 +6,11 @@ public class ButtonCodeGenerator extends CodeGenerator {
 
   private static ButtonCodeGenerator INSTANCE = null;
 
-  public ButtonCodeGenerator() {
+  private ButtonCodeGenerator() {
     super(Label.BUTTON);
   }
 
-  public static ButtonCodeGenerator getInstance() {
+  public static CodeGenerator getInstance() {
     if (INSTANCE == null)
       INSTANCE = new ButtonCodeGenerator();
     return INSTANCE;

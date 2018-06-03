@@ -6,7 +6,7 @@ public class TextFieldCodeGenerator extends CodeGenerator {
 
   private static TextFieldCodeGenerator INSTANCE;
 
-  public TextFieldCodeGenerator() {
+  private TextFieldCodeGenerator() {
     super(Label.TEXT_FIELD);
   }
 
@@ -16,7 +16,7 @@ public class TextFieldCodeGenerator extends CodeGenerator {
         "android:inputType=\"textPersonName\"";
   }
 
-  public static TextFieldCodeGenerator getInstance() {
+  public static CodeGenerator getInstance() {
     if (INSTANCE == null)
       INSTANCE = new TextFieldCodeGenerator();
     return INSTANCE;
