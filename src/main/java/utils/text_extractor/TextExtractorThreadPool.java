@@ -27,23 +27,27 @@ public class TextExtractorThreadPool {
   private void initCallables(List<Pair<Form, AnnotateImageRequest>> requests) {
     for (Pair<Form, AnnotateImageRequest> pair : requests) {
       Callable<FormWithText> callable = () -> {
-        if (pair.getSecondValue() == null)
-          return new FormWithText(pair.getFirstValue(), null);
+        try {
+          if (pair.getSecondValue() == null)
+            return new FormWithText(pair.getFirstValue(), null);
 
-        BatchAnnotateImagesResponse response = visionClient.batchAnnotateImages(Collections.singletonList(pair.getSecondValue()));
-        List<AnnotateImageResponse> responsesList = response.getResponsesList();
+          BatchAnnotateImagesResponse response = visionClient.batchAnnotateImages(Collections.singletonList(pair.getSecondValue()));
+          List<AnnotateImageResponse> responsesList = response.getResponsesList();
 
-        if (responsesList.isEmpty())
-          return new FormWithText(pair.getFirstValue(), null);
+          if (responsesList.isEmpty())
+            return new FormWithText(pair.getFirstValue(), null);
 
-        AnnotateImageResponse res = responsesList.get(0);
-        if (res.hasError())
-          return new FormWithText(pair.getFirstValue(), null);
+          AnnotateImageResponse res = responsesList.get(0);
+          if (res.hasError())
+            return new FormWithText(pair.getFirstValue(), null);
 
-        String text = res.getFullTextAnnotation().getText();
-        if (text.endsWith("\n"))
-          text = text.substring(0, text.length() - 1);
-        return new FormWithText(pair.getFirstValue(), text);
+          String text = res.getFullTextAnnotation().getText();
+          if (text.endsWith("\n"))
+            text = text.substring(0, text.length() - 1);
+          return new FormWithText(pair.getFirstValue(), text);
+        } catch (Exception e) {
+          return null;
+        }
       };
       callables.add(callable);
     }

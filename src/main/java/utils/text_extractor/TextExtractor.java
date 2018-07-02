@@ -37,7 +37,7 @@ public class TextExtractor {
     } catch (Exception e) {
       e.printStackTrace();
     }
-    return null;
+    return getDummyResult(forms);
   }
 
   private List<Pair<Form, AnnotateImageRequest>> computeRequests(BufferedImage inputImage, List<Form> forms) throws Exception {
@@ -69,6 +69,18 @@ public class TextExtractor {
     }
 
     return requests;
+  }
+
+  private List<FormWithText> getDummyResult(List<Form> forms) {
+    if (forms == null)
+      return null;
+    if (forms.isEmpty())
+      return new ArrayList<>();
+    List<FormWithText> result = new ArrayList<>();
+    for (Form form : forms) {
+      result.add(new FormWithText(form, null));
+    }
+    return result;
   }
 
   private static byte[] convertToBytes(BufferedImage image) throws Exception {

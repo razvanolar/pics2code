@@ -15,6 +15,6 @@ public class FormWithText {
   }
 
   public String getText() {
-    return text;
+    return text == null ? form.getLabel().getTag() : text;
   }
 }

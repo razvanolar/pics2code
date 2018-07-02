@@ -40,7 +40,7 @@
                         <!--<manifestFile>${main.basedir}/src/main/resources/META-INF/MANIFEST.MF</manifestFile>-->
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>Pics2Code</mainClass>
+                            <mainClass>Pics2CodeApp</mainClass>
                             <classpathPrefix>libs/</classpathPrefix>
                         </manifest>
                     </archive>
